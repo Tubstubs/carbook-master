@@ -708,25 +708,22 @@
         </div>
 
         <div class="modal" id="locationModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <h2 class="modal-title text-white">One more step...</h2>
-                        <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                        >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body bg-primary">
-                        <div class="">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content rounded bg-transparent border-0">
+                    <div class="row modal-body no-gutters w-100 m-0 p-0 d-flex">
+                        <div class="col-6 align-self-center">
                             <form
                                 action="#"
                                 class="request-form ftco-animate bg-primary"
                             >
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                                 <div class="form-group">
                                     <label for="" class="label"
                                         >Pick-up location</label
@@ -845,6 +842,40 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="col-6 align-self-center">
+                            <div class="">
+                                <div
+                                    class="d-flex flex-column bg-light rounded-right py-4"
+                                >
+                                    <div>
+                                        <h3
+                                            class="heading-section text-center"
+                                            id="modalCarTitle"
+                                        >
+                                            Better Way to Rent Your Perfect Cars
+                                        </h3>
+                                        <h6
+                                            class="heading-section text-center"
+                                            id="modalCarSubTitle"
+                                        >
+                                            Better Way to Rent Your Perfect Cars
+                                        </h6>
+                                    </div>
+
+                                    <div
+                                        class="row justify-content-center py-3"
+                                    >
+                                        <img
+                                            id="modalCarImage"
+                                            src=""
+                                            alt="Car Image"
+                                            width="320"
+                                            height="200"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -861,6 +892,33 @@
                         var locationModal = new bootstrap.Modal(
                             document.getElementById("locationModal")
                         );
+                        var backgroundImageStyle =
+                            this.parentNode.parentNode.previousElementSibling
+                                .style.backgroundImage;
+                        var imageUrl = backgroundImageStyle
+                            .replace('url("', "")
+                            .replace('")', "");
+
+                        var modalCarImage =
+                            document.getElementById("modalCarImage");
+                        modalCarImage.src = imageUrl;
+
+                        var carTitle =
+                            this.parentNode.parentNode.querySelector(
+                                "h2 a"
+                            ).innerText;
+                        var modalCarTitle =
+                            document.getElementById("modalCarTitle");
+                        modalCarTitle.innerText = carTitle;
+
+                        var carSubTitle =
+                            this.parentNode.parentNode.querySelector(
+                                "div span"
+                            ).innerText;
+                        var modalCarSubTitle =
+                            document.getElementById("modalCarSubTitle");
+                        modalCarSubTitle.innerText = carSubTitle;
+
                         locationModal.show();
                     });
                 }
